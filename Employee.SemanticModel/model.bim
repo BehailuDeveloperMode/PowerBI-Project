@@ -293,11 +293,23 @@
             "annotations": [
               {
                 "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
+                "value": "{\"currencyCulture\":\"en-US\"}"
               }
             ],
             "expression": "CALCULATE([Total Salary],ALL(Employee))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "lineageTag": "dc6488e5-ae0f-4ab1-9006-f6d4cba0f775"
+          },
+          {
+            "name": "Avarage Salary",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "AVERAGE(Employee[salary])",
+            "lineageTag": "d759fb13-ec1e-417c-a39e-f9568cebde1e"
           }
         ],
         "partitions": [
