@@ -52,6 +52,13 @@
         "fromTable": "Employee",
         "toColumn": "Date",
         "toTable": "CalanderDate"
+      },
+      {
+        "name": "697f397b-6099-415c-870a-b2b829d69a14",
+        "fromColumn": "department",
+        "fromTable": "Employee",
+        "toColumn": "department",
+        "toTable": "Department"
       }
     ],
     "sourceQueryCulture": "en-US",
@@ -871,6 +878,67 @@
                 "    #\"Changed Type\""
               ],
               "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Department",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "f87cf8c3fdaa4546a5400d2761be8b72"
+          }
+        ],
+        "columns": [
+          {
+            "name": "department",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "1258556d-7892-42d6-acfd-d5c453b50ef3",
+            "sourceColumn": "Employee[department]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Color",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": [
+              "IF(",
+              "    Department[department] = \"HR\",\"Red\",",
+              "    IF(Department[department] = \"Marketing\",\"Blue\",",
+              "    IF(Department[department] = \"Finance\",\"Purple\",",
+              "    IF(Department[department] = \"IT\",\"Yellow\",",
+              "    IF(Department[department] = \"Sales\",\"Green\",\"Brown\"",
+              ")))))"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "4c553d35-bb30-4b8e-bd79-a95962fdd2e8",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "lineageTag": "afd5501f-e52f-430b-a996-3439fd5403ab",
+        "partitions": [
+          {
+            "name": "Department",
+            "mode": "import",
+            "source": {
+              "expression": "SUMMARIZE(Employee,Employee[department])",
+              "type": "calculated"
             }
           }
         ]
